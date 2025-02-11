@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqp43ckx3l38d"]
+
+[ext_resource type="PackedScene" uid="uid://c03586cgctobb" path="res://Assets/Scenes/Systems/player.tscn" id="1_1rbyi"]
+[ext_resource type="Script" path="res://Assets/Scenes/Systems/player_system.gd" id="1_p2cip"]
+[ext_resource type="PackedScene" uid="uid://bn4necflq0t28" path="res://Assets/Scenes/Systems/camera_2d.tscn" id="2_a7v2e"]
+[ext_resource type="PackedScene" uid="uid://yt1w57ts1af" path="res://Assets/Scenes/Menus/pause_menu.tscn" id="3_4wusc"]
+[ext_resource type="PackedScene" uid="uid://cjc1em7pwn751" path="res://Assets/Scenes/Systems/hook.tscn" id="3_ircal"]
+[ext_resource type="Texture2D" uid="uid://2mfgdfyuo7yy" path="res://Assets/Sprites/Hook/p2Hook.png" id="4_lquv3"]
+[ext_resource type="Texture2D" uid="uid://tv8y1lavtieb" path="res://Assets/Sprites/Hook/p1Hook.png" id="5_xvll3"]
+
+[node name="PlayerSystem" type="Node2D"]
+script = ExtResource("1_p2cip")
+
+[node name="Player2" parent="." instance=ExtResource("1_1rbyi")]
+collision_mask = 2
+jumpKey = "p2u"
+right = "p2r"
+left = "p2l"
+grappleKey = "p2g"
+player = 2
+JUMP_VELOCITY = -500.0
+
+[node name="P2Hook" parent="Player2" node_paths=PackedStringArray("targetPlayer") instance=ExtResource("3_ircal")]
+targetPlayer = NodePath("../../Player")
+hook = ExtResource("4_lquv3")
+
+[node name="Player" parent="." instance=ExtResource("1_1rbyi")]
+collision_mask = 2
+jumpKey = "ui_up"
+grappleKey = "p1g"
+JUMP_VELOCITY = -500.0
+
+[node name="P1Hook" parent="Player" node_paths=PackedStringArray("targetPlayer") instance=ExtResource("3_ircal")]
+targetPlayer = NodePath("../../Player2")
+hook = ExtResource("5_xvll3")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_a7v2e")]
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("3_4wusc")]
+visible = false
+z_index = 2
+offset_left = -629.0
+offset_top = -346.0
+offset_right = -629.0
+offset_bottom = -346.0

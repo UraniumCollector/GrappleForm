@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjc1em7pwn751"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Systems/hook.gd" id="1_gomws"]
+[ext_resource type="Texture2D" uid="uid://d04o8yp016xci" path="res://Assets/Sprites/Hook/Grapple_Hook.png" id="2_ym161"]
+
+[node name="Hook" type="RayCast2D"]
+rotation = 4.71239
+script = ExtResource("1_gomws")
+
+[node name="HookTexture" type="Sprite2D" parent="."]
+position = Vector2(0, 46)
+rotation = 3.14159
+texture = ExtResource("2_ym161")

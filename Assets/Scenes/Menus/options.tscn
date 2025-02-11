@@ -1,0 +1,152 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3pbdkutymu4i"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Menus/options.gd" id="1_5i7ma"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_xicd5"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_mxw1g"]
+events = [SubResource("InputEventKey_xicd5")]
+
+[node name="Options" type="Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5i7ma")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -89.5
+offset_right = 113.5
+offset_bottom = 89.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="Settings" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Video" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/Settings"]
+layout_mode = 2
+
+[node name="VLabel" type="CenterContainer" parent="AspectRatioContainer/VBoxContainer/Settings/Video"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer/Settings/Video/VLabel"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Video"
+fit_content = true
+
+[node name="FScreenToggle" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/Settings/Video"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer/Settings/Video/FScreenToggle"]
+layout_mode = 2
+text = "Fullscreen"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FullScreen" type="CheckButton" parent="AspectRatioContainer/VBoxContainer/Settings/Video/FScreenToggle"]
+layout_mode = 2
+button_pressed = true
+
+[node name="VsyncToggle" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/Settings/Video"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer/Settings/Video/VsyncToggle"]
+layout_mode = 2
+text = "Vsync"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Vsync" type="CheckButton" parent="AspectRatioContainer/VBoxContainer/Settings/Video/VsyncToggle"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="AspectRatioContainer/VBoxContainer/Settings/Video"]
+layout_mode = 2
+text = "Resolution:"
+
+[node name="Resolution" type="OptionButton" parent="AspectRatioContainer/VBoxContainer/Settings/Video"]
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "1080p"
+popup/item_1/text = "720p"
+popup/item_1/id = 1
+popup/item_2/text = "360p"
+popup/item_2/id = 2
+popup/item_3/text = "144p"
+popup/item_3/id = 3
+
+[node name="VSeparator" type="VSeparator" parent="AspectRatioContainer/VBoxContainer/Settings"]
+visibility_layer = 0
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Audio" type="VBoxContainer" parent="AspectRatioContainer/VBoxContainer/Settings"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer/VBoxContainer/Settings/Audio"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer/Settings/Audio/CenterContainer"]
+layout_mode = 2
+text = "Audio"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer/Settings/Audio"]
+layout_mode = 2
+text = "Volume"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/VBoxContainer/Settings/Audio"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="AspectRatioContainer/VBoxContainer/Settings/Audio/HBoxContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="VolumeInd" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer/Settings/Audio/HBoxContainer"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+text = "100"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VSeparator" type="VSeparator" parent="AspectRatioContainer/VBoxContainer"]
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Back" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+shortcut = SubResource("Shortcut_mxw1g")
+text = "Back"
+
+[connection signal="toggled" from="AspectRatioContainer/VBoxContainer/Settings/Video/FScreenToggle/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="toggled" from="AspectRatioContainer/VBoxContainer/Settings/Video/VsyncToggle/Vsync" to="." method="_on_vsync_toggled"]
+[connection signal="item_selected" from="AspectRatioContainer/VBoxContainer/Settings/Video/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="value_changed" from="AspectRatioContainer/VBoxContainer/Settings/Audio/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

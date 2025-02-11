@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://yt1w57ts1af"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Menus/pause_menu.gd" id="1_n2ajx"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n2ajx")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+offset_right = 70.0
+offset_bottom = 101.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Menu" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="Quit" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
