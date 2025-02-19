@@ -31,6 +31,12 @@ window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
+[importer_defaults]
+
+texture={
+"detect_3d/compress_to": 0
+}
+
 [input]
 
 p2r={
