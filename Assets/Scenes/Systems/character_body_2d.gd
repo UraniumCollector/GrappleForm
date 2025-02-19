@@ -4,13 +4,15 @@ extends CharacterBody2D
 @export var left = "ui_left"
 @export var grappleKey = ""
 @export var player = 1
-
+var isGrappling = false
 @onready var animated_sprite = $AnimatedSprite2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
 @export var airSpeed = 0.1
 var animation
+var grappleSpeed = 200
+var target
 
 func _ready():
 	if player == 1:
@@ -38,7 +40,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis(left, right)
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not isGrappling:
 		velocity += get_gravity() * delta
 		velocity.x += direction * SPEED * airSpeed
 
@@ -50,11 +52,28 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed(jumpKey) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	
-	if direction and is_on_floor():
+	if player == 1:
+		if Input.is_action_pressed("p1g"):
+			isGrappling = true
+			if(Input.is_action_just_pressed("p1g")):
+				target = %Player2.position
+		else:
+			isGrappling = false
+	elif player == 2:
+		if Input.is_action_pressed("p2g"):
+			isGrappling = true
+			if(Input.is_action_just_pressed("p2g")):
+				target = %Player.position
+		else:
+			isGrappling = false
+	
+	if player == 1 and isGrappling:
+		velocity = -Vector2(position - target).normalized() * grappleSpeed
+	elif player == 2 and isGrappling:
+		velocity = -Vector2(position - target).normalized() * grappleSpeed
+	
+	if direction and is_on_floor() and not isGrappling:
 		velocity.x = direction * SPEED
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, SPEED)

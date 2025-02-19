@@ -12,6 +12,7 @@
 script = ExtResource("1_p2cip")
 
 [node name="Player2" parent="." instance=ExtResource("1_1rbyi")]
+unique_name_in_owner = true
 collision_mask = 2
 jumpKey = "p2u"
 right = "p2r"
@@ -25,6 +26,7 @@ targetPlayer = NodePath("../../Player")
 hook = ExtResource("4_lquv3")
 
 [node name="Player" parent="." instance=ExtResource("1_1rbyi")]
+unique_name_in_owner = true
 collision_mask = 2
 jumpKey = "ui_up"
 grappleKey = "p1g"
