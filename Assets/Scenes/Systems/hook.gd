@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 		#thank you godot forum user for the code I adapted here! https://forum.godotengine.org/t/help-with-look-at-function/39999/4
 		look_at(targetPlayer.position)
 		rotate(PI * 1.5)
-		#position.direction_to(direction)
+	else:
+		pass

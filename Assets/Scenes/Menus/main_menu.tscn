@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbt05hxqiqwoe"]
+[gd_scene load_steps=3 format=3 uid="uid://bbt05hxqiqwoe"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Menus/main_menu.gd" id="1_gpayy"]
+[ext_resource type="StyleBox" uid="uid://bsfeuwbm8yifk" path="res://Assets/Scenes/Menus/MenuButtonHover.tres" id="2_riqcj"]
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(200, 200)
@@ -28,20 +29,24 @@ layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.705939, 3.53761e-06, 3.85046e-07, 1)
 text = "GrappleForm"
 fit_content = true
 autowrap_mode = 0
 
 [node name="Play" type="Button" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/hover = ExtResource("2_riqcj")
 text = "Play"
 
 [node name="Options" type="Button" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/hover = ExtResource("2_riqcj")
 text = "Options"
 
 [node name="Quit" type="Button" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/hover = ExtResource("2_riqcj")
 text = "Quit"
 
 [connection signal="pressed" from="AspectRatioContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]

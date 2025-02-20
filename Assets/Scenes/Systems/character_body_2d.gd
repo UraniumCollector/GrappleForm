@@ -54,24 +54,20 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	
 	if player == 1:
-		if Input.is_action_pressed("p1g"):
-			isGrappling = true
-			if(Input.is_action_just_pressed("p1g")):
-				target = %Player2.position
-		else:
-			isGrappling = false
+		if(Input.is_action_just_pressed("p1g")):
+			target = %Player2.position
+			isGrappling = !isGrappling
 	elif player == 2:
-		if Input.is_action_pressed("p2g"):
-			isGrappling = true
-			if(Input.is_action_just_pressed("p2g")):
-				target = %Player.position
-		else:
-			isGrappling = false
+		if(Input.is_action_just_pressed("p2g")):
+			target = %Player.position
+			isGrappling = !isGrappling
 	
 	if player == 1 and isGrappling:
 		velocity = -Vector2(position - target).normalized() * grappleSpeed
+		move_and_slide()
 	elif player == 2 and isGrappling:
 		velocity = -Vector2(position - target).normalized() * grappleSpeed
+		move_and_slide()
 	
 	if direction and is_on_floor() and not isGrappling:
 		velocity.x = direction * SPEED
