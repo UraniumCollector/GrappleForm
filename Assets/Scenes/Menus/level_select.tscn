@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://c76tyywoal0qn"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Menus/level_select.gd" id="1_rxt2e"]
+[ext_resource type="StyleBox" uid="uid://bsfeuwbm8yifk" path="res://Assets/Scenes/Menus/MenuButtonHover.tres" id="2_xekm1"]
+[ext_resource type="StyleBox" uid="uid://kree2fyg82fu" path="res://Assets/Scenes/Menus/LVL_SELECT_BUTTONS.tres" id="2_y0h1k"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rxt2e")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 250)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Select Level"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LVL1" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_styles/hover = ExtResource("2_y0h1k")
+text = "1"
+
+[node name="LVL2" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_styles/hover = ExtResource("2_y0h1k")
+text = "2"
+
+[node name="LVL3" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_styles/hover = ExtResource("2_y0h1k")
+text = "3"
+
+[node name="LVL4" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_styles/hover = ExtResource("2_y0h1k")
+text = "4"
+
+[node name="LVL5" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_styles/hover = ExtResource("2_y0h1k")
+text = "5"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/hover = ExtResource("2_xekm1")
+text = "Back"
+clip_text = true
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LVL1" to="." method="_on_lvl_1_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
