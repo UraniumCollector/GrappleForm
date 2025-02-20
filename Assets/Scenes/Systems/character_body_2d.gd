@@ -62,12 +62,10 @@ func _physics_process(delta: float) -> void:
 			target = %Player.position
 			isGrappling = !isGrappling
 	
-	if player == 1 and isGrappling:
+	if isGrappling:
 		velocity = -Vector2(position - target).normalized() * grappleSpeed
 		move_and_slide()
-	elif player == 2 and isGrappling:
-		velocity = -Vector2(position - target).normalized() * grappleSpeed
-		move_and_slide()
+	
 	
 	if direction and is_on_floor() and not isGrappling:
 		velocity.x = direction * SPEED
