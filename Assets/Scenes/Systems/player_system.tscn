@@ -37,6 +37,7 @@ targetPlayer = NodePath("../../Player2")
 hook = ExtResource("5_xvll3")
 
 [node name="Camera2D" parent="." instance=ExtResource("2_a7v2e")]
+unique_name_in_owner = true
 
 [node name="PauseMenu" parent="Camera2D" instance=ExtResource("3_4wusc")]
 visible = false

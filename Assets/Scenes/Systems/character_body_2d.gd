@@ -4,15 +4,15 @@ extends CharacterBody2D
 @export var left = "ui_left"
 @export var grappleKey = ""
 @export var player = 1
-var isGrappling = false
 @onready var animated_sprite = $AnimatedSprite2D
-
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
 @export var airSpeed = 0.1
+
 var animation
 var grappleSpeed = 200
 var target
+var isGrappling = false
 
 func _ready():
 	if player == 1:
